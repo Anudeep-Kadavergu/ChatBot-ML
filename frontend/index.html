@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot in PHP | CodingNepal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <span id='ip'></span>
+    <h1> Welcome to Inventory Management ChatBot</h1>
+    <div class="chat-box">
+        <div class="chat-closed"> 
+            <img src='download.png' class="image"/> 
+            <div class="overlay">
+                <div class="text">Click ME!</div>
+            </div>
+        </div>
+        <div class="wrapper hide">
+            <div class="title">Inventory Management Chatbot <i class="fa fa-close content"></i> </div>
+            <div class="form ">
+                <div class="bot-inbox inbox">
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="msg-header">
+                        <p>Hello there, how can I help you?<br> Click on Any Link Given Below! <br/><br/>
+                            <button id='Material Search' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Material Search</button>
+                            <button id='Inventory Count' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Inventory Count</button>
+                            <button id='PO Search' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>PO Search</button>
+                            <button id='Service Tag Search' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Service Tag Search</button>
+                            <button id='Request an Inventory' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Request an Inventory</button></p>                   
+                    </div>
+                </div>
+                <div class="bot-inbox inbox second-message">
+                    <div class="icon-empty">
+                    
+                    </div>    
+                </div>
+            </div>
+            <div class="typing-field">
+                <div class="input-data">
+                    <input id="data" type="text" placeholder="Type something here.." required>
+                    <button id="send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){    
+            $("#send-btn").on("click", function(){
+                $value = $("#data").val();
+                $msg = '<div class="user-inbox inbox"><div class="msg-header"><p>'+ $value +'</p></div></div>';
+                $(".form").append($msg);
+                $("#data").val('');
+                // start ajax code
+                $.ajax({
+                    url: 'http://127.0.0.1:5000/api/v1/resources?id='+$value+'&&user=kad',
+                    success: function(result){
+                        $replay = '<div class="bot-inbox inbox"><div class="icon"><i class="fas fa-user"></i></div><div class="msg-header"><p>'+ result +'</p></div></div>';
+                        $(".form").append($replay);
+                        // when chat goes down the scroll bar automatically comes to the bottom
+                        $(".form").scrollTop($(".form")[0].scrollHeight);
+                    }
+                });
+            });
+            $(".chat-closed").on("click",function(e){
+                $(".wrapper, .content").removeClass("hide");
+                $(this).addClass("hide");
+            });
+            $(".content").on("click",function(e){
+                $(".wrapper,.content").addClass("hide");
+                $(".chat-closed").removeClass("hide");
+            }); 
+                      
+        });
+        function autosubmit(val){
+            // start ajax code
+            msg = '<div class="user-inbox inbox"><div class="msg-header"><p>'+ val +'</p></div></div>';
+            $(".form").append(msg);
+            $.ajax({
+                    url: 'http://127.0.0.1:5000/api/v1/resources?id='+val+'&&user=kad',
+                    success: function(result){
+                        $replay = '<div class="bot-inbox inbox"><div class="icon"><i class="fas fa-user"></i></div><div class="msg-header"><p>'+ result +'</p></div></div>';
+                        $(".form").append($replay);
+                        // when chat goes down the scroll bar automatically comes to the bottom
+                        $(".form").scrollTop($(".form")[0].scrollHeight);
+                    }
+                });
+        } 
+    </script>   
+</body>
+</html>
