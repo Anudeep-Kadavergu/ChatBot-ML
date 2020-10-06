@@ -1,0 +1,78 @@
+{"intents": [
+    {"tag": "greeting",
+     "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+     "responses": ["Hello <br/> How can I help you", "Hi there <br/> How can I help you"],
+     "context": [""]
+    },
+    {"tag": "goodbye",
+     "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+     "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
+     "context": [""]
+    },
+    {"tag": "thanks",
+     "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+     "responses": ["Happy to help!", "Any time!", "My pleasure"],
+     "context": [""]
+    },
+    {"tag": "noanswer",
+     "patterns": [],
+     "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
+     "context": [""]
+    },
+    {"tag": "introduction",
+     "patterns": ["My name is","I am","Myself"],
+     "responses": ["I am Inventory ChatBot","Myself Inventory ChatBot","My name is Inventory ChatBot"],
+     "context": [""]
+    },
+    {"tag": "identity",
+     "patterns": ["Who are you","Tell something about you","Describe Your self"],
+     "responses": ["I am Inventory ChatBot, I can do you the following tasks:<br/><button id='Material Search' onclick='javascript:autosubmit(this.id);'>1. Material Search</button><br/><button id='PO Search' onclick='javascript:autosubmit(this.id);'>2. Post an Order</button>"],
+     "context": [""]
+    },
+    {"tag": "capability",
+     "patterns": ["What are your capabilities?","What Can you do"],
+     "responses": ["Iam  Inventory ChatBot, I can respond to your queries with an appropriate solution ."],
+     "context": [""]
+    },
+    {"tag": "total-count",
+    "patterns": ["what is total inventory count","what is inventory status","inventory count"],
+    "responses": ["Select any One: <br/><button id='Laptop Count' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Laptop</button><button id='Keyboard/Mouse Count' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Keyboard/Mouse</button><button id='Docking Count' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Dock</button><button id='Battery Count' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Battery Search</button><button id='Bag Count' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Bag</button>"],
+    "context": ["conn"]
+    },
+    {"tag": "search",
+    "patterns": ["PO","Service Tag", "Give me the details of this ", "About PO", "Details of PO"],
+    "responses": ["1"],
+    "context": [""]
+    },
+    {"tag": "laptop-count",
+    "patterns": ["Laptop Count","laptop count"],
+    "responses": ["Please Enter Site Code"],
+    "context": ["lap_dep"]
+    },
+    {"tag": "material-search",
+    "patterns": ["Material Search","material search"],
+    "responses": ["Please Enter which Material you are looking for"],
+    "context": [""]
+    },
+    {"tag": "po-search",
+    "patterns": ["PO Search","po search"],
+    "responses": ["Enter PO that you want to search"],
+    "context": ["lap_dep"]
+    },
+    {"tag": "service-tag-search",
+    "patterns": ["Service Tag Search","service tag search"],
+    "responses": ["Please Enter Service Tag"],
+    "context": ["https://dell.com/"]
+    },
+    {"tag": "request-an-inventory",
+    "patterns": ["Request an inventory","request an inventory", "request inventory"],
+    "responses": ["Please Enter request details, I can store it in my database and can send you your order summary"],
+    "context": [""]
+    },
+    {"tag": "restart",
+    "patterns": ["restart","start again", "options", ""],
+    "responses": ["Hello there, how can I help you?<br> Click on Any Link Given Below! <br/><br/><button id='Material Search' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Material Search</button><button id='Inventory Count' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Inventory Count</button><button id='PO Search' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>PO Search</button><button id='Service Tag Search' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Service Tag Search</button><button id='Request an Inventory' onclick='javascript:autosubmit(this.id);' type='button' class='btn btn-outline-dark btn-sm'>Request an Inventory</button>"],
+    "context": [""]
+    }
+]
+}
