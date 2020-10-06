@@ -1,5 +1,9 @@
 # ChatBot-ML
 
+Development
+-----------------------
+> Developed using python packages such as keras, nltk over tensorflow. It can store the user's previous messgaes and replies accordingly.Need to train with more data inorder to work efficiently.
+
 Installation
 ---------------------------
 > 1. Clone this repo
