@@ -1,17 +1,18 @@
 import app.main
 import flask
 from flask import request, jsonify
+from flask import Flask
 from flask_cors import CORS
 
 
 
-application = flask.Flask(__name__)
+application = flask.Flask(__name__, static_url_path="")
 application.config["DEBUG"] = True
 CORS(application)
 
 @application.route('/', methods=['GET'])
 def home():
-    return ""
+    return application.send_static_file('index.html')
 
 @application.route('/api/v1/resources', methods=['GET'])
 def api_id():
