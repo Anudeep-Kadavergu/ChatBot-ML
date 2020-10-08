@@ -17,6 +17,5 @@ Installation
   > * python server.py
   > * Now the server is running at http://localhost:5000
   > * Check the response at http://localhost:5000/api/v1/resources?id=message&&user=name
-> 5. Interacting through UI
-  > * Navigate to frontend folder and open index.html
+> 5. Open http://localhost:5000
 > 6. Enjoy chatting with bot
